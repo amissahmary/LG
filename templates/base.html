@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mary Amissah">
+    <meta name="description" content="Template for the website.">
+    <title>{% block title %}Document{% endblock %}</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <img src="" alt="LG logo">
+            <h1>Levite Generation</h1>
+            <a href="#"><img src="" alt="account"></a>
+            {% if user.is_authenticated %}
+            <span>Welcome, {{ user.username }}!</span>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+            {% endif %}
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <ul>
+            <li><img src="" alt="Instagram"></li>
+            <li><img src="" alt="Tiktok"></li>
+            <li><img src="" alt="Youtube"></li>
+        </ul>
+        <h6>
+            Levite Generation © 2026
+        </h6>
+    </footer>
+</body>
+
+</html>
